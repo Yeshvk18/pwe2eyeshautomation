@@ -1,0 +1,8 @@
+{
+  "debug.toolBarLocation": "floating",
+  "files.exclude": {
+    "**/.git": false,
+    "**/.github": false,
+    "**/.vscode": false
+  }
+}
