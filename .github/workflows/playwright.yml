@@ -18,17 +18,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20  # pin to a specific version for consistency
+          node-version: 20
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup Playwright (browsers + dependencies)
-        uses: microsoft/playwright-github-action@v1
+      # ✅ Official, modern way to install browsers + system deps
+      - name: Install Playwright Browsers and Dependencies
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: npx playwright test
 
+      # ✅ Always upload report, even if tests fail
       - name: Upload Playwright HTML report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
